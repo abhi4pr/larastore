@@ -1,0 +1,1 @@
+Your password is : <strong>{{ $body }}</strong>
