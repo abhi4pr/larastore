@@ -138,6 +138,12 @@ class CustomerController extends Controller
        return $pdf->download('urinvoice.pdf');
     }
 
+    public function PayuFormData()
+    {
+       $frmdata = DB::table('carts')->where('email',Session::get('email'))->get();
+       return view('/pay1')->with('frmdata',$frmdata);
+    }
+
     public function ProfileUp(Request $request) 
     {
       $name = $request->input('name');

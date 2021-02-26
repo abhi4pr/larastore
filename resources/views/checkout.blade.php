@@ -63,7 +63,7 @@
                     </div>
                 </form>
 
-                <a href="pay1.php" class="btn btn-success btn-block" style="margin-bottom:20px;">Pay by Payumoney</a>
+                <a href="/pay1" class="btn btn-success btn-block" style="margin-bottom:20px;">Pay by Payumoney</a>
             
             </div>
         </div>
