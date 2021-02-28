@@ -125,15 +125,27 @@ class CustomerController extends Controller
 
     public function DetailoOrder($id)
     {
-       $ordrdtl = DB::table('order_items')->where('order_id',$id)->get();
-       return view('/order_detail')->with('ordrdtl',$ordrdtl);
+
+      $ordrdtl = DB::table('order_items')->where('order_id',$id)->get();
+      
+      $prod_name =[];
+      foreach($ordrdtl as $order_list){
+        $prod_name[$order_list->product_id] = DB::table("products")->where('id',$order_list->product_id)->value('pname');
+      }
+      return view('/order_detail')->with(['ordrdtl' => $ordrdtl, 'prod_name' => $prod_name]);
     }
 
     public function DownloadInvoice($id)
     {  
        // download pdf invoice
        $invo = DB::table('order_items')->where('order_id',$id)->get();
-       view()->share('ordrdtl',$invo);
+       
+       $prod_name =[];
+        foreach($invo as $order_list){
+         $prod_name[$order_list->product_id] = DB::table("products")->where('id',$order_list->product_id)->value('pname');
+        }
+
+       view()->share(['ordrdtl' => $invo, 'prod_name' => $prod_name]);
        $pdf = PDF::loadView('/invoice',$invo);
        return $pdf->download('urinvoice.pdf');
     }
@@ -142,6 +154,16 @@ class CustomerController extends Controller
     {
        $frmdata = DB::table('carts')->where('email',Session::get('email'))->get();
        return view('/pay1')->with('frmdata',$frmdata);
+    }
+
+    public function SuccessPayment()
+    {
+      return view('/pay2');
+    }
+
+    public function FailurePayment()
+    {
+      return view('/pay3');
     }
 
     public function ProfileUp(Request $request) 

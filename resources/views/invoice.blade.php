@@ -34,14 +34,11 @@
                                @foreach($ordrdtl as $print)
                                  <tr> 
                                   <td>{{ $print->order_id }}</td> 
-                                    
-                                      <td>{{$print->product_id}}</td>
-                                    
+                                  <td>{{ $prod_name[$print->product_id]}}</td>
                                   <td>{{ $print->qty }}</td>
                                   <td>{{ $print->price*$print->qty }}</td>
                                   <td>{{ $print->pmode }}</td>
                                   <td>{{ $print->order_on }}</td>
-                                  
                                  </tr> 
                                @endforeach
                             </tbody>

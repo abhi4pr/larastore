@@ -122,7 +122,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
         </tr>
         <tr>
           <td>Failure URI: </td>
-          <td colspan="3"><input name="furl" value="http://localhost:8000/pay3.php" size="64" /></td>
+          <td colspan="3"><input name="furl" value="http://localhost:8000/pay3" size="64" /></td>
         </tr>
 
         <tr>

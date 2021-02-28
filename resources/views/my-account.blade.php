@@ -93,9 +93,7 @@
                                        @foreach($gtordit as $code)
                                          <tr> 
                                           <td>{{ $code->order_id }}</td> 
-                                            
-                                              <td>{{$prod_name[$order_list->product_id]}}</td>
-                                            
+                                          <td>{{ $prod_name[$code->product_id] }}</td>    
                                           <td>{{ $code->qty }}</td>
                                           <td>{{ $code->price*$code->qty }}</td>
                                           <td>{{ $code->pmode }}</td>

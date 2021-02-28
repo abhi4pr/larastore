@@ -59,7 +59,7 @@ If (isset($_POST["additionalCharges"])) {
               $run3 = mysqli_query($connect,$insert2);
             }
 
-            $delete1 = "DELETE from cart WHERE email = '$sessionvar'";
+            $delete1 = "DELETE from carts WHERE email = '$sessionvar'";
             $run4 = mysqli_query($connect,$delete1);
 
           echo "<script>alert('Ordered successfully')</script>";

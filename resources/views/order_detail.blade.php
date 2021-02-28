@@ -66,9 +66,7 @@
                                        @foreach($ordrdtl as $jaat)
                                          <tr> 
                                           <td>{{ $jaat->order_id }}</td> 
-                                            
-                                              <td>{{$jaat->product_id}}</td>
-                                            
+                                          <td>{{ $prod_name[$jaat->product_id]}}</td>
                                           <td>{{ $jaat->qty }}</td>
                                           <td>{{ $jaat->price*$jaat->qty }}</td>
                                           <td>{{ $jaat->pmode }}</td>

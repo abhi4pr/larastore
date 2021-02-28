@@ -63,8 +63,9 @@ Route::group(['middleware'=>['prevent_back_history','user_auth']], function(){
     Route::get('/order_detail/{id}', 'App\Http\Controllers\CustomerController@DetailoOrder');
     Route::get('/invoice/{id}', 'App\Http\Controllers\CustomerController@DownloadInvoice');
     Route::get('/pay1', 'App\Http\Controllers\CustomerController@PayuFormData');
-    Route::get('/pay2', function () { return view('pay2'); });
 });
+    Route::post('/pay2', 'App\Http\Controllers\CustomerController@SuccessPayment');
+    Route::post('/pay3', 'App\Http\Controllers\CustomerController@FailurePayment');
 
 Route::post('/admin/login/submit', 'App\Http\Controllers\AdminController@index');
 Route::get('/admin/logout', 'App\Http\Controllers\AdminController@Logout');
