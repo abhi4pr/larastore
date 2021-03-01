@@ -161,7 +161,12 @@ class AdminController extends Controller
 
     public function Allorders()
     {
-       $allord = DB::table('order_items')->get();
-       return view('/admin/allorders')->with('allord',$allord);
+       $allord = DB::table('order_items')->join('customers', 'customers.email', '=', 'order_items.email')->get();
+       
+       $prod_name =[];
+         foreach($allord as $order_list){
+           $prod_name[$order_list->product_id] = DB::table("products")->where('id',$order_list->product_id)->value('pname');
+         }
+       return view('/admin/allorders')->with(['allord'=>$allord, 'prod_name'=>$prod_name]);
     }
 }

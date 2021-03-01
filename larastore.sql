@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 08:18 AM
+-- Generation Time: Mar 01, 2021 at 08:16 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -212,7 +212,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `username`, `email`, `number`, `address`, `pmode`, `grand_total`, `order_on`) VALUES
 (2, 'vivo', 'vivo@gmail.com', '7894651302', 'tejaji nagar', 'COD', 285, '2021-02-22 14:35:54'),
-(3, 'ankit', 'ankit@gmail.com', '7534548788', 'data gate pp', 'COD', 4800, '2021-02-24 08:02:14');
+(3, 'ankit', 'ankit@gmail.com', '7534548788', 'data gate pp', 'COD', 4800, '2021-02-24 08:02:14'),
+(5, 'vivo', 'vivo@gmail.com', '7894651302', 'tejaji nagar', 'Payumoney', 210, '2021-02-27 19:03:19');
 
 -- --------------------------------------------------------
 
@@ -239,7 +240,9 @@ CREATE TABLE `order_items` (
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `qty`, `price`, `pmode`, `email`, `grand_total`, `order_on`) VALUES
 (1, 2, 3, 2, 120.00, 'COD', 'vivo@gmail.com', 285, '2021-02-22 14:35:54'),
 (2, 2, 1, 1, 45.00, 'COD', 'vivo@gmail.com', 285, '2021-02-22 14:35:54'),
-(3, 3, 2, 1, 4800.00, 'COD', 'ankit@gmail.com', 4800, '2021-02-24 08:02:14');
+(3, 3, 2, 1, 4800.00, 'COD', 'ankit@gmail.com', 4800, '2021-02-24 08:02:14'),
+(6, 5, 1, 2, 45.00, 'Payumoney', 'vivo@gmail.com', 210, '2021-02-27 19:03:19'),
+(7, 5, 3, 1, 120.00, 'Payumoney', 'vivo@gmail.com', 210, '2021-02-27 19:03:19');
 
 -- --------------------------------------------------------
 
@@ -382,7 +385,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -412,13 +415,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`

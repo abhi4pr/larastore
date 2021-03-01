@@ -45,9 +45,9 @@
                 <tr> 
                   <td>{{ $conte->order_id }}</td> 
                   <td>{{ $conte->email }}</td> 
-                  <td>{{ $conte->email }}</td> 
-                  <td>{{ $conte->email }}</td> 
-                  <td>{{ $conte->pmode }}</td> 
+                  <td>{{ $conte->number }}</td> 
+                  <td>{{ $conte->address }}</td> 
+                  <td>{{ $prod_name[$conte->product_id] }}</td> 
                   <td>{{ $conte->email }}</td> 
                   <td>{{ $conte->qty }}</td> 
                   <td>{{ $conte->price*$conte->qty }}</td>   
