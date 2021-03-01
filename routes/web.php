@@ -97,3 +97,4 @@ Route::post('/review/submit', 'App\Http\Controllers\WebController@SaveReview');
 Route::get('/', 'App\Http\Controllers\WebController@HomeProBlog');
 Route::get('/category/cname/{data}', 'App\Http\Controllers\WebController@ProToCat');
 Route::get('/getcategories','App\Http\Controllers\WebController@CateMenu');
+Route::post('/getmessages','App\Http\Controllers\WebController@GetBotMessages');

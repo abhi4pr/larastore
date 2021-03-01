@@ -235,3 +235,80 @@
     <!--=======  End of category menu =======-->
 </header>
 <!-- header end -->
+<i class="fa fa-comment" href="#" aria-hidden="true" onclick="openForm()" style="font-size: 60px;
+    color: red;
+    float: right !important;
+    bottom: 0;
+    position: fixed;
+    z-index: 9999;
+    display: inline-block;"></i>
+
+<div class="container" id="myForm" style="display:none;">
+ <div class="row justify-content-md-center mb-4">
+    <div class="col-md-6">
+       <!--start code-->
+       <div class="card">
+          <div class="card-body messages-box">
+             <h5>I am here to help you</h5> <i class="fa fa-window-close fa-2x" aria-hidden="true" onclick="closeForm()" style="float:right; margin-top:-20px;"></i>
+             <ul class="list-unstyled messages-list">
+                    
+            
+             </ul>
+          </div>
+          <div class="card-header">
+            <div class="input-group">
+               <input id="input-me" required="required" type="text" name="messages" class="form-control input-sm" placeholder="Type your message here..." />
+               <span class="input-group-append">
+                 <input type="button" class="btn btn-primary" value="Send" onclick="send_msg()">
+               </span>
+            </div> 
+          </div>
+       </div>
+       <!--end code-->
+    </div>
+ </div>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+<script type="text/javascript">
+ function getCurrentTime(){
+    var now = new Date();
+    var hh = now.getHours();
+    var min = now.getMinutes();
+    var ampm = (hh>=12)?'PM':'AM';
+    hh = hh%12;
+    hh = hh?hh:12;
+    hh = hh<10?'0'+hh:hh;
+    min = min<10?'0'+min:min;
+    var time = hh+":"+min+" "+ampm;
+    return time;
+ }
+ function send_msg(){
+    //jQuery('.start_chat').hide();
+    var txt=jQuery('#input-me').val();
+    var html='<li class="messages-me clearfix"><span class="message-img"><img src="{{ URL::asset("img/user_avatar.png") }}" class="avatar-sm rounded-circle"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">Me</strong> <small class="time-messages text-muted"><span class="fas fa-time"></span> <span class="minutes">'+getCurrentTime()+'</span></small> </div><p class="messages-p">'+txt+'</p></div></li>';
+    jQuery('.messages-list').append(html);
+    jQuery('#input-me').val('');
+    if(txt){
+        jQuery.ajax({
+            url:'/getmessages',
+            type:'post',
+            data:'txt='+txt,
+            success:function(result){
+                var html='<li class="messages-you clearfix"><span class="message-img"><img src="{{ URL::asset("img/bot_avatar.png") }}" class="avatar-sm rounded-circle"></span><div class="message-body clearfix"><div class="message-header"><strong class="messages-title">Chatbot</strong> <small class="time-messages text-muted"><span class="fas fa-time"></span> <span class="minutes">'+getCurrentTime()+'</span></small> </div><p class="messages-p">'+result+'</p></div></li>';
+                jQuery('.messages-list').append(html);
+                jQuery('.messages-box').scrollTop(jQuery('.messages-box')[0].scrollHeight);
+            }
+        });
+    }
+ }
+</script>

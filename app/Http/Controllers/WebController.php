@@ -12,6 +12,7 @@ use Redirect;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\RatingReview;
+use App\Models\ChatbotHint;
 
 class WebController extends Controller
 {
@@ -176,6 +177,20 @@ class WebController extends Controller
        ]);
 
        return redirect::back()->with('success','Your Review Submitted'); 
+    }
+
+    public function GetBotMessages(Request $request)
+    {
+       date_default_timezone_set('Asia/Kolkata');
+
+        $txt = $request->input('messages');
+        $sql = DB::table('chatbot_hints')->where('question','LIKE','%'.$txt.'%')->value('reply');
+        // its not working correctly , please do it from your self
+        if($sql){
+          return $sql;
+        } else {
+          return $sorry = "Sorry not be able to understand you";
+        }
     }
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2021 at 08:16 AM
+-- Generation Time: Mar 01, 2021 at 09:17 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -110,6 +110,32 @@ INSERT INTO `categories` (`id`, `cname`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chatbot_hints`
+--
+
+CREATE TABLE `chatbot_hints` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reply` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `chatbot_hints`
+--
+
+INSERT INTO `chatbot_hints` (`id`, `question`, `reply`, `created_at`, `updated_at`) VALUES
+(1, 'HI||Hello||Hola', 'Hello, how are you.', NULL, NULL),
+(2, 'How are you', 'I am fine, thank you', NULL, NULL),
+(3, 'what is your name||whats your name', 'My name ChatBot', NULL, NULL),
+(4, 'what should I call you', 'You can call me ChatBot', NULL, NULL),
+(5, 'Where are your from', 'I am from PHP code', NULL, NULL),
+(6, 'Bye||See you later||Have a Good Day', 'Sad to see you are going. Have a nice day', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contacts`
 --
 
@@ -187,7 +213,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2021_02_19_100550_create_carts_table', 10),
 (11, '2021_02_22_072214_create_orders_table', 11),
 (12, '2021_02_22_072226_create_order_items_table', 11),
-(13, '2021_02_22_162230_create_rating_reviews_table', 12);
+(13, '2021_02_22_162230_create_rating_reviews_table', 12),
+(14, '2021_03_01_081228_create_chatbot_hints_table', 13);
 
 -- --------------------------------------------------------
 
@@ -324,6 +351,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `chatbot_hints`
+--
+ALTER TABLE `chatbot_hints`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
@@ -394,6 +427,12 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `chatbot_hints`
+--
+ALTER TABLE `chatbot_hints`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
@@ -409,7 +448,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orders`

@@ -13,5 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'http://localhost:8000/pay2',
+        'http://localhost:8000/getmessages'
     ];
 }
